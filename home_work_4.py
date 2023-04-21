@@ -4,7 +4,7 @@ from typing import Any
 
 def players_repr(players: list[dict]) -> None:
     for i in players:
-        print(f"{i['name']} : {i['age']} : {i['number']}")
+        print(f"player №{i['number']}: name - {i['name']}, age - {i['age']} yars")
 
 
 def players_add(players: list[dict], player: dict) -> list[dict]:
@@ -13,19 +13,19 @@ def players_add(players: list[dict], player: dict) -> list[dict]:
 
 
 def players_del(players: list[dict], name: str) -> list[dict]:
-    [players.remove(i) for i in players if i["name"] == name]
+    [players.remove(i) for i in players if i["name"].lower() == name.lower()]
     return players
 
 
 def players_find(players: list[dict], field: str, value: Any) -> list[dict]:
     new_players_find = []
-    d = [new_players_find.append(i) for i in players if str(i[field]) == value]
+    [new_players_find.append(i) for i in players if str(i[field]).lower() == value.lower()]
     return new_players_find
 
 
 def players_get_by_name(players: list[dict], name: str) -> dict | None:
     for i in players:
-        if i["name"] == name:
+        if i["name"].lower() == name.lower():
             return i
 
 
